@@ -1,0 +1,27 @@
+
+.main-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  width: 100%;
+
+  font-size: 1.6rem;
+
+  &--container {
+    padding-bottom: 4rem;
+    flex-grow: 1;
+    height: 100vh;
+    overflow: auto;
+    width: auto;
+    background-color: var(--light-bg-color);
+  }
+
+  &--navbar-container {
+    padding: .5rem 0;
+    background-color: var(--main-bg-color);
+    border-bottom: .1rem solid var(--main-border-color);
+    margin-bottom: 1rem;
+  }
+}
