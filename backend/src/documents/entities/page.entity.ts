@@ -4,7 +4,7 @@ import { Category } from './category.entity';
 
 @Entity()
 export class Page extends Document {
-  @Column({ type: 'text' })
+  @Column({ type: 'text', select: false })
   content: string;
 
   @ManyToOne(() => Category, (category) => category.pages)

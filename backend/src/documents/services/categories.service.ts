@@ -14,6 +14,17 @@ export class CategoriesService {
     private readonly entityManager: EntityManager,
   ) {}
 
+  async get(categoryId: string) {
+    const category = await this.categoriesRepository.findOne(categoryId);
+    if (!category) {
+      throw new HttpException(
+        'Category with this identifier does not exist.',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+    return category;
+  }
+
   async getHierarchy() {
     const root = await this.getRoot();
     const treeRepository = this.entityManager.getTreeRepository(Category);
