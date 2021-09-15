@@ -1,4 +1,11 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import {
+  forwardRef,
+  HttpException,
+  HttpStatus,
+  Inject,
+  Injectable,
+  Logger,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Page } from '../entities/page.entity';
 import { Repository } from 'typeorm';
@@ -7,10 +14,13 @@ import { CategoriesService } from './categories.service';
 
 @Injectable()
 export class PagesService {
+  private readonly logger: Logger = new Logger(PagesService.name);
+
   constructor(
+    @Inject(forwardRef(() => CategoriesService))
+    private readonly categoriesService: CategoriesService,
     @InjectRepository(Page)
     private readonly pagesRepository: Repository<Page>,
-    private readonly categoriesService: CategoriesService,
   ) {}
 
   async get(pageId: string) {
@@ -36,6 +46,19 @@ export class PagesService {
       category,
     });
     await this.pagesRepository.save(page);
+    return page;
+  }
+
+  async remove(pageId: string) {
+    const page = await this.pagesRepository.findOne(pageId);
+    if (!page) {
+      throw new HttpException(
+        'Page with this identifier does not exist.',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+    this.logger.warn(`Remove page with id ${page.id}.`);
+    await this.pagesRepository.remove(page);
     return page;
   }
 }
