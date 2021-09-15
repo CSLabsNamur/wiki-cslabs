@@ -7,6 +7,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { APP_FILTER } from '@nestjs/core';
 import { HttpExceptionFilter } from './utils/filters/http-exception.filter';
 import { EmailModule } from './email/email.module';
+import { DocumentsModule } from './documents/documents.module';
 
 /** NestJS main module.
  * The App module handles the environment variables
@@ -42,6 +43,7 @@ import { EmailModule } from './email/email.module';
     AuthenticationModule,
     EmailModule,
     UsersModule,
+    DocumentsModule,
   ],
   controllers: [],
   providers: [
