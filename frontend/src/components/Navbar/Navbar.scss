@@ -4,4 +4,12 @@
   border-bottom: .1rem solid var(--main-border-color);
 
   background-color: var(--light-bg-color);
+
+  .navbar__logo {
+    margin: 0 .4rem;
+    height: 3rem;
+    width: 3rem;
+    object-fit: contain;
+  }
+
 }

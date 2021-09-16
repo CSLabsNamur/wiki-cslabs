@@ -3,7 +3,6 @@
     width: 30rem;
     resize: horizontal;
     background-color: var(--main-bg-color);
-    min-height: 100vh;
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
@@ -14,20 +13,6 @@
         border: none;
         margin-left: 0;
         background-color: inherit;
-    }
-
-    .navbar-header {
-        width: 100%;
-        border-top: .1rem solid var(--main-border-color);
-        border-bottom: .1rem solid var(--main-border-color);
-        margin-bottom: 2rem;
-        padding: .5rem 0;
-        background-color: var(--light-bg-color);
-        color: var(--green-tx-color);
-        font-weight: 600;
-        font-size: 2.4rem;
-        text-align: center;
-        line-height: 3.4rem;
     }
 
     .navbar-nav {
